@@ -35,15 +35,7 @@ namespace API
         {
             services.AddApplicationServices(_config);
             services.AddControllers();
-            services.AddCors(options =>
-            {
-                options.AddPolicy(name: MyAllowSpecificOrigins,
-                                builder =>
-                                {
-                                    builder.WithOrigins("http://localhost:4200",
-                                                        "https://localhost:4200");
-                                });
-            });
+            services.AddCors();
             services.AddIdentityServices(_config);
 
         }
@@ -60,7 +52,10 @@ namespace API
 
             app.UseRouting();
 
-            app.UseCors(MyAllowSpecificOrigins);
+            app.UseCors(x => x.AllowAnyHeader()
+                .AllowAnyMethod()
+                .AllowCredentials()
+                .WithOrigins("https://localhost:4200"));
 
             app.UseAuthentication();
 
