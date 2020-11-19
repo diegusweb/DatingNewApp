@@ -11,7 +11,8 @@ namespace API.Extensions
     {
         public static IServiceCollection AddApplicationServices(this IServiceCollection services, IConfiguration _config)
         {
-            services.AddScoped<ITokenService, TokenServices>();            
+            services.AddScoped<ITokenService, TokenServices>();       
+            services.AddScoped<IUserRepository, UserRepository>();     
             services.AddDbContext<DataContext>(options =>
             {
                 options.UseSqlServer(_config.GetConnectionString("DevConnection"));
