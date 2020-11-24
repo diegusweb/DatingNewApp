@@ -4,7 +4,7 @@ export interface Member {
     UserName: string;
     Gender: string;
     DateOfBirth: string;
-    KnownAs: string;
+    knownAs: string;
     Created: string;
     LastActive: string;
     Introduction: string;
