@@ -1,4 +1,4 @@
 export interface Photo {
-    Url: string;
-    IsMan: boolean;
+    url: string;
+    isMan: boolean;
   }
